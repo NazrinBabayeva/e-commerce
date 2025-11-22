@@ -9,7 +9,6 @@ import com.example.ecommerce.service.CategoryService;
 import com.example.ecommerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
         import java.util.List;
@@ -23,7 +22,7 @@ public class AdminController {
     private final BrandService brandService;
     private final ProductService productService;
 
-    // ================= CATEGORY =================
+    //CATEGORY
     @PostMapping("/category")
     public ResponseEntity<CategoryDto> saveCategory(@RequestBody CategoryDto dto) {
         return ResponseEntity.ok(categoryService.saveCategory(dto));
@@ -55,7 +54,7 @@ public class AdminController {
         return ResponseEntity.ok().build();
     }
 
-    // ================= BRAND =================
+    // BRAND
     @PostMapping("/brand")
     public ResponseEntity<BrandDto> saveBrand(@RequestBody BrandDto dto) {
         return ResponseEntity.ok(brandService.saveBrand(dto));
@@ -87,7 +86,7 @@ public class AdminController {
         return ResponseEntity.ok().build();
     }
 
-    // ================= PRODUCT =================
+    //  PRODUCT
     @PostMapping("/product")
     public ResponseEntity<ProductDto> saveProduct(@RequestBody ProductDto dto) {
         return ResponseEntity.ok(productService.saveProduct(dto));
