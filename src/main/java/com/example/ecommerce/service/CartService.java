@@ -24,7 +24,6 @@ public class CartService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
 
-    // Add product to cart
     public CartDto addProductToCart(String userEmail, Long productId, Integer count) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -47,7 +46,6 @@ public class CartService {
         return Mapper.toCartDto(cartRepository.save(cart));
     }
 
-    // Remove product from cart
     public void removeProductFromCart(String userEmail, Long cartId) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -63,7 +61,6 @@ public class CartService {
         cartRepository.delete(cart);
     }
 
-    // Get user cart
     public List<CartDto> getUserCart(String userEmail) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -73,7 +70,6 @@ public class CartService {
                 .collect(Collectors.toList());
     }
 
-    // Buy products in cart
     public void buyProductsInCart(String userEmail) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));

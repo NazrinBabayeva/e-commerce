@@ -16,14 +16,12 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    // CREATE
     public CategoryDto saveCategory(CategoryDto dto) {
         Category category = Mapper.toCategoryEntity(dto);
         category.setStatus(true);
         return Mapper.toCategoryDto(categoryRepository.save(category));
     }
 
-    // GET ALL ACTIVE
     public List<CategoryDto> getAllCategories() {
         return categoryRepository.findAll()
                 .stream()
@@ -32,7 +30,6 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    // GET BY ID
     public CategoryDto getCategoryById(Long id) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
@@ -40,7 +37,6 @@ public class CategoryService {
         return Mapper.toCategoryDto(category);
     }
 
-    // GET BY NAME
     public CategoryDto getCategoryByName(String name) {
         Category category = categoryRepository.findByName(name)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
@@ -48,7 +44,6 @@ public class CategoryService {
         return Mapper.toCategoryDto(category);
     }
 
-    // UPDATE
     public CategoryDto updateCategory(CategoryDto dto) {
         Category category = categoryRepository.findById(dto.getId())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
@@ -57,7 +52,6 @@ public class CategoryService {
         return Mapper.toCategoryDto(categoryRepository.save(category));
     }
 
-    // DELETE (soft delete)
     public void deleteCategory(Long id) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));

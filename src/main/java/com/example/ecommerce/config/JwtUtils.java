@@ -8,7 +8,7 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    private final String jwtSecret = "SuperSecretKey12345"; // istəyə görə dəyişdirilə bilər
+    private final String jwtSecret = "SuperSecretKey8080";
     private final long jwtExpirationMs = 1000 * 60 * 60 * 24; // 24 saat
 
     // Token yaratmaq

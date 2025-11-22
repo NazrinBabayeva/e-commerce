@@ -21,13 +21,11 @@ public class CustomerController {
     private final CartService cartService;
     private final UserService userService;
 
-    // GET ALL ACTIVE PRODUCTS
     @GetMapping("/products")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllActiveProducts());
     }
 
-    // ADD PRODUCT TO CART
     @PostMapping("/cart/add/{productId}")
     public ResponseEntity<CartDto> addProductToCart(
             Authentication authentication,
@@ -38,7 +36,6 @@ public class CustomerController {
         return ResponseEntity.ok(cartService.addProductToCart(email, productId, count));
     }
 
-    // REMOVE PRODUCT FROM CART
     @DeleteMapping("/cart/remove/{cartId}")
     public ResponseEntity<Void> removeProductFromCart(
             Authentication authentication,
@@ -49,14 +46,12 @@ public class CustomerController {
         return ResponseEntity.ok().build();
     }
 
-    // GET USER CART
     @GetMapping("/cart")
     public ResponseEntity<List<CartDto>> getUserCart(Authentication authentication) {
         String email = authentication.getName();
         return ResponseEntity.ok(cartService.getUserCart(email));
     }
 
-    // BUY PRODUCTS IN CART
     @PostMapping("/cart/buy")
     public ResponseEntity<Void> buyProductsInCart(Authentication authentication) {
         String email = authentication.getName();
