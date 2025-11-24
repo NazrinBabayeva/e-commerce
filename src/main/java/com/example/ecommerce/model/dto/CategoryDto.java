@@ -13,6 +13,6 @@ public class CategoryDto {
     private Long id;
     private String name;
     private String description;
-    private boolean status; // true = aktiv, false = deleted
+    private Boolean status; // true = aktiv, false = deleted
 }
 

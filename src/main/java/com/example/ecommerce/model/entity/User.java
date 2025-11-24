@@ -23,5 +23,5 @@ public class User {
     private String email;
     private String password;
     private String address;
-    private double accountBalance = 0.0;
+    private double accountBalance = 10000;
 }

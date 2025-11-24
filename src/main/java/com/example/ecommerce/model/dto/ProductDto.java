@@ -15,7 +15,7 @@ public class ProductDto {
     private String description;
     private double amount;
     private int remainCount;
-    private double starRating;
+    private Double starRating;
     private String comment;
     private List<String> productDetails;
     private Long categoryId;

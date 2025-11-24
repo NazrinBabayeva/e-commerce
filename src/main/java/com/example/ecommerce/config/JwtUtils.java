@@ -1,14 +1,19 @@
 package com.example.ecommerce.config;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
 public class JwtUtils {
 
-    private final String jwtSecret = "SuperSecretKey8080";
+    private final SecretKey jwtSecret = Keys.hmacShaKeyFor(
+            "SuperSecretKeySuperSecretKeySuperSecretKeySuperSecretKeySuperSecretKeySuperSecretKeySuperSecretKeySuperSecretKey".getBytes()
+    );
+
     private final long jwtExpirationMs = 1000 * 60 * 60 * 24; // 24 saat
 
     // Token yaratmaq
@@ -23,8 +28,9 @@ public class JwtUtils {
 
     // Token-dən email almaq
     public String getEmailFromToken(String token) {
-        return Jwts.parser()
+        return Jwts.parserBuilder()
                 .setSigningKey(jwtSecret)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
@@ -33,7 +39,10 @@ public class JwtUtils {
     // Token yoxlama
     public boolean validateJwtToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(jwtSecret)
+                    .build()
+                    .parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             e.printStackTrace();

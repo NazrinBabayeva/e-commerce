@@ -16,5 +16,5 @@ public class CartDto {
     private Long userId;
     private Long productId;
     private int count;
-    private double totalAmount;
+    private Double totalAmount;
 }

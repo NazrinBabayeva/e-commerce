@@ -55,7 +55,7 @@ public class Mapper {
                 .id(dto.getId())
                 .name(dto.getName())
                 .description(dto.getDescription())
-                .status(dto.isStatus())
+                .status(dto.getStatus())
                 .build();
     }
 
@@ -74,7 +74,7 @@ public class Mapper {
                 .id(dto.getId())
                 .name(dto.getName())
                 .description(dto.getDescription())
-                .status(dto.isStatus())
+                .status(dto.getStatus())
                 .build();
     }
 
@@ -130,6 +130,34 @@ public class Mapper {
                 .totalAmount(dto.getTotalAmount())
                 .build();
     }
+
+    /*public static SignupResponse toSignupResponse(User user) {
+        if (user == null) return null;
+
+        return SignupResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .message("User successfully registered")
+                .build();
+    }
+
+    public static User toUserEntityForSignup(UserDto dto) {
+        if (dto == null) return null;
+
+        User user = new User();
+        user.setId(dto.getId());
+        user.setName(dto.getName());
+        user.setSurname(dto.getSurname());
+        user.setBirthdate(dto.getBirthdate());
+        user.setFin(dto.getFin());
+        user.setAccount(dto.getAccount());
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        user.setAddress(dto.getAddress());
+        user.setAccountBalance(dto.getAccountBalance());
+
+        return user;
+    }*/
 
     // ================= LIST MAPPERS =================
     public static java.util.List<ProductDto> toProductDtoList(java.util.List<Product> products) {
